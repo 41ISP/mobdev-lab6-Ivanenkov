@@ -2,7 +2,7 @@ import { IHogwarts } from "@/components/entity/Hogwarts.rdo"
 import Input from "@/components/input/Input"
 import { router } from "expo-router"
 import { useEffect, useState } from "react"
-import { Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Image, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { StyleSheet } from "react-native"
 import { Dropdown } from "react-native-element-dropdown"
 import hogwartsAPI from "@/components/shared/api"
@@ -44,13 +44,18 @@ const Main = () => {
         }
         viZOV();
     },[])
+    
     return (
         <View style={styles.MainView} className="MainView">
-            <Input value={value} setValue={setValue} placevalue={"123"} ></Input>
-            <Dropdown data={data} value={value2} onChange={(e) => setValue2(e as TGender)} labelField={""} valueField={""}>
+            <Input value={value} setValue={setValue} placevalue={"Напишите имя и фамилию персонажа"} ></Input>
+            <Dropdown data={data} value={value2} onChange={(e) => setValue2(e)} labelField={"label"} valueField={"value"}>
             
             </Dropdown>
-            {/* <TouchableOpacity onPress={() => router.push('/PageMain')}><Text>Нажми</Text></TouchableOpacity> */}
+
+            <TouchableOpacity onPress={() => router.push('/page/PageChell')}><Text>Нажми</Text></TouchableOpacity>
+            <View>
+                <Image/>
+            </View>
         </View>
     )
 }
