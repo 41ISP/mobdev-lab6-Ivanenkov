@@ -2,7 +2,7 @@ import { Image, Touchable, TouchableOpacity, View } from "react-native"
 import { IHogwarts } from "../../components/entity/Hogwarts.rdo"
 import { Text } from "react-native"
 import { router } from "expo-router"
-const Pers = ({name, image,actor, species, gender, house}: IHogwarts)=>{
+const PersClick = ({name, image,actor, species, gender, house}: IHogwarts)=>{
     return(
         <View>
             <Image src={image}/>
@@ -11,9 +11,9 @@ const Pers = ({name, image,actor, species, gender, house}: IHogwarts)=>{
             <Text>{species}</Text>
             <Text>{gender}</Text>
             <Text>{house}</Text>
-            <TouchableOpacity onPress={()=> router.push('/PageMain')}></TouchableOpacity>
+            <TouchableOpacity onPress={()=> router.push('/page/PageChell')}><Text>Назад</Text></TouchableOpacity>
         </View>
     )
 }
 
-export default Pers
+export default PersClick

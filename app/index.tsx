@@ -4,6 +4,7 @@ import { router } from "expo-router"
 import { useEffect, useState } from "react"
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { StyleSheet } from "react-native"
+import Feed from "@/components/feed/Feed"
 import { Dropdown } from "react-native-element-dropdown"
 import hogwartsAPI from "@/components/shared/api"
 type TGender = "female" | "male" | undefined
@@ -14,10 +15,10 @@ const Main = () => {
     const [filterperz, setFilterperz] = useState<IHogwarts[]>([]);
     const data= [
         {
-            label: 'female', value: '1'
+            label: 'female', value: 'female'
         },
         {
-            label: 'male', value: '2'
+            label: 'male', value: 'male'
         }
     ] as {label: TGender, value: string}[]
     useEffect(()=> {
@@ -48,14 +49,10 @@ const Main = () => {
     return (
         <View style={styles.MainView} className="MainView">
             <Input value={value} setValue={setValue} placevalue={"Напишите имя и фамилию персонажа"} ></Input>
-            <Dropdown data={data} value={value2} onChange={(e) => setValue2(e)} labelField={"label"} valueField={"value"}>
+            <Dropdown data={data} value={value2} onChange={(e) => setValue2(e.value)} labelField={"label"} valueField={"value"}>
             
             </Dropdown>
-
-            <TouchableOpacity onPress={() => router.push('/page/PageChell')}><Text>Нажми</Text></TouchableOpacity>
-            <View>
-                <Image/>
-            </View>
+            <Feed perz={filterperz}></Feed>
         </View>
     )
 }
